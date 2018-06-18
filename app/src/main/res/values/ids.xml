@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="vpager_o1ne1" type="id">123</item>
+    <item name="vpager_t1wo1" type="id">1</item>
+    <item name="vpager_t1hree1" type="id">1</item>
+    <item name="vpager_f1orth1" type="id">1</item>
+</resources>

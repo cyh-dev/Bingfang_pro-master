@@ -1,0 +1,15 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+[remote "origin"]
+	url = https://github.com/clearlove88/Bingfang_pro.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[remote "github"]
+	url = https://github.com/clearlove88/Bingfang_pro4.git
+	fetch = +refs/heads/*:refs/remotes/github/*
+£Ûuser£Ý
+ email£½631313771@qq.com
+ name£½clearlove88
