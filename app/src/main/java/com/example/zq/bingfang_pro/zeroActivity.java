@@ -27,14 +27,14 @@ public class zeroActivity extends AppCompatActivity {
     private ArrayList<View> aList;
     private MyPagerAdapter mAdapter;
 
-    private EditText Jspo2;
+    private static  EditText Jspo2;
 
-    private EditText Spm;
-    private EditText Sspo2;
+    private static EditText Spm;
+    private static EditText Sspo2;
 
-    private EditText Ben;
-    private EditText Bpm;
-    private EditText Bspo2;
+    private static EditText Ben;
+    private static EditText Bpm;
+    private static EditText Bspo2;
 
 
 
@@ -67,24 +67,148 @@ public class zeroActivity extends AppCompatActivity {
         Bspo2= (EditText) aList.get(0).findViewById(R.id.b_spo2);
 
 
+    }
 
+    public static void setJspo2(String data){
+
+        Jspo2.setText(data);
 
     }
+
+    public static void setSpm(String data){
+
+        Spm.setText(data);
+
+    }
+
+    public static void setSspo2(String data){
+
+        Sspo2.setText(data);
+
+    }
+
+    public static void setBen(String data){
+
+        Ben.setText(data);
+
+    }
+    public static void setBpm(String data){
+
+        Bpm.setText(data);
+
+    }
+
+    public static void setBspo2(String data){
+
+        Bspo2.setText(data);
+
+    }
+
+
+
+
+
     public void onClick1(View view) {
 
-        Toast.makeText(getApplicationContext(),Ben.getText().toString()+" "+Bpm.getText().toString()+" "+Bspo2.getText().toString(), Toast.LENGTH_SHORT).show();
+
+        if (!"".equals(Ben.getText().toString())){
+            DataPacket data=new DataPacket();
+            data.setContent(Ben.getText().toString());
+            data.setCode(6);
+            data.setSendTime(new Date());
+            sendData(data);
+        }
+
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        if (!"".equals(Bspo2.getText().toString())){
+            DataPacket data=new DataPacket();
+            data.setContent(Bspo2.getText().toString());
+            data.setCode(4);
+            data.setSendTime(new Date());
+            sendData(data);
+        }
+
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        if (!"".equals(Bpm.getText().toString())){
+            DataPacket data=new DataPacket();
+            data.setContent(Bpm.getText().toString());
+            data.setCode(5);
+            data.setSendTime(new Date());
+            sendData(data);
+        }
 
 
     }
     public void onClick2(View view) {
 
-        Toast.makeText(getApplicationContext(), Jspo2.getText().toString(), Toast.LENGTH_SHORT).show();
+        if (!"".equals(Jspo2.getText().toString())){
+            DataPacket data=new DataPacket();
+            data.setContent(Jspo2.getText().toString());
+            data.setCode(1);
+            data.setSendTime(new Date());
+            sendData(data);
+        }
+
     }
 
     public void onClick3(View view) {
-        Toast.makeText(getApplicationContext(), Spm.getText().toString()+" "+Sspo2.getText().toString(), Toast.LENGTH_SHORT).show();
+
+        if (!"".equals(Spm.getText().toString())){
+            DataPacket data=new DataPacket();
+            data.setContent(Spm.getText().toString());
+            data.setCode(3);
+            data.setSendTime(new Date());
+            sendData(data);
+        }
+
+        if (!"".equals(Sspo2.getText().toString())){
+            DataPacket data=new DataPacket();
+            data.setContent(Sspo2.getText().toString());
+            data.setCode(2);
+            data.setSendTime(new Date());
+            sendData(data);
+        }
+
     }
 
+    private void sendData(final DataPacket dataPacket){
+
+        new Thread(){
+
+            @Override
+            public void run(){
+                ByteBuffer buffer=ByteBuffer.allocate(1024);
+                buffer.clear();
+                ByteArrayOutputStream bytesOut=new ByteArrayOutputStream();
+                ObjectOutputStream ojbOut= null;
+                try {
+                    ojbOut = new ObjectOutputStream(bytesOut);
+                    ojbOut.writeObject(dataPacket);
+                    ojbOut.close();
+
+                    buffer.put(bytesOut.toByteArray());
+                    bytesOut.close();
+                    buffer.flip();
+                    Connection.client.write(buffer);
+                    buffer.clear();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }.start();
+
+    }
 
 
 

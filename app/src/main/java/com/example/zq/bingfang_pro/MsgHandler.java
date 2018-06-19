@@ -37,6 +37,12 @@ public class MsgHandler extends Handler {
        if (code==200){
 
            Toast.makeText(main.getApplicationContext(), "连接成功！", Toast.LENGTH_SHORT).show();
+
+           MyHandler myHandler=new MyHandler();
+           HandlerThread handlerThread=new HandlerThread(Connection.client,myHandler);
+           handlerThread.start();
+
+
            main.startActivity(new Intent(main,zeroActivity.class));
        }else {
            Toast.makeText(main.getApplicationContext(), "连接失败！", Toast.LENGTH_SHORT).show();
