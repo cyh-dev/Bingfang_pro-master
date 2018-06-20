@@ -109,6 +109,26 @@ public class zeroActivity extends AppCompatActivity {
 
 
     public void onClick1(View view) {
+        int c ;
+        try {
+            c = Integer.parseInt(Bspo2.getText().toString());
+            if(c<=0||c>100)
+            {
+                Toast.makeText(getApplicationContext(), "血氧浓度的范围是0%-100%！", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            c = Integer.parseInt(Bpm.getText().toString());
+            if(c<=0)
+            {
+                Toast.makeText(getApplicationContext(), "pm2.5需大于0", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            Toast.makeText(getApplicationContext(), "格式输入错误", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
 
 
         if (!"".equals(Ben.getText().toString())){
@@ -150,6 +170,18 @@ public class zeroActivity extends AppCompatActivity {
 
     }
     public void onClick2(View view) {
+        try{
+            int c = Integer.parseInt(Jspo2.getText().toString());
+            if(c<=0)
+            {
+                Toast.makeText(getApplicationContext(), "pm2.5必须大于0", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            Toast.makeText(getApplicationContext(), "格式输入错误", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         if (!"".equals(Jspo2.getText().toString())){
             DataPacket data=new DataPacket();
@@ -162,6 +194,24 @@ public class zeroActivity extends AppCompatActivity {
     }
 
     public void onClick3(View view) {
+        try{
+            int c = Integer.parseInt(Spm.getText().toString());
+            if(c<=00||c>100)
+            {
+                Toast.makeText(getApplicationContext(), "血氧浓度的范围是0%-100%！", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            c = Integer.parseInt(Sspo2.getText().toString());
+            if(c<=0)
+            {
+                Toast.makeText(getApplicationContext(), "pm2.5必须大于0", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            Toast.makeText(getApplicationContext(), "格式输入错误", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         if (!"".equals(Spm.getText().toString())){
             DataPacket data=new DataPacket();

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Bingfang_pro.iml" filepath="$PROJECT_DIR$/Bingfang_pro.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Bingfang_pro-master.iml" filepath="$PROJECT_DIR$/.idea/Bingfang_pro-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/Bingfang_pro-master.iml" filepath="$PROJECT_DIR$/Bingfang_pro-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
