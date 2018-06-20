@@ -196,7 +196,7 @@ public class zeroActivity extends AppCompatActivity {
     public void onClick3(View view) {
         try{
             int c = Integer.parseInt(Spm.getText().toString());
-            if(c<=00||c>100)
+            if(c<=0||c>100)
             {
                 Toast.makeText(getApplicationContext(), "血氧浓度的范围是0%-100%！", Toast.LENGTH_SHORT).show();
                 return;
