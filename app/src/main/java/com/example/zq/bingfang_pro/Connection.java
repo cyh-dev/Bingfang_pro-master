@@ -57,7 +57,12 @@ public class Connection extends Thread{
             client.write(buffer);
             buffer.clear();
 
-            int index=1000;
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            int index=1500;
             while (true) {
                 long count = client.read(buffer);
 
